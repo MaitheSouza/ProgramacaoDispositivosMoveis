@@ -9,7 +9,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  TextEditingController valor = TextEditingController();
+  TextEditingController valorController = TextEditingController();
 
   String dropdownDe = 'Dolar';
   String dropdownPara = 'Euro';
@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
 
   _titulo() {
     return AppBar(
-      title: Text("Conversor de Moedas \n\n Dólar, Real e Euro"),
+      title: Text("Conversor de Moedas Dólar, Real e Euro"),
       centerTitle: true,
       backgroundColor: Colors.pinkAccent,
     );
@@ -45,7 +45,9 @@ class _HomeState extends State<Home> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          _campo("valorController:", valor, TextInputType.text),
+          _campo("Insira um valor:", valorController, TextInputType.number),
+          _dropdownButtonDe(),
+          _dropdownButtonPara(),
           _botao(),
           infoResultado
               ? Column(
@@ -53,7 +55,7 @@ class _HomeState extends State<Home> {
                     _texto("Resultado"),
                   ],
                 )
-              : _texto("Clique em confirmar"),
+              : _texto("Clique em converter"),
         ],
       ),
     );
@@ -106,7 +108,7 @@ class _HomeState extends State<Home> {
 
   _botao() {
     return Padding(
-      padding: EdgeInsets.only(top: 20.0, bottom: 40.0),
+      padding: EdgeInsets.only(top: 40.0, bottom: 40.0),
       child: Container(
         height: 50.0,
         child: RaisedButton(
